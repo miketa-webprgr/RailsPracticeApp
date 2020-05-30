@@ -55,13 +55,13 @@
 ---
 
 CacooというWebアプリケーションを使うことにした。  
-作った図は以下のとおり。  
+作った図は以下のとおり（修正後の最新版）。  
 
-<a href="https://cacoo.com/diagrams/MIS8VpBACc4MNzLs/90A3B"><img src="https://cacoo.com/diagrams/MIS8VpBACc4MNzLs-90A3B-w800-h600.png" width="800" border=1/></a>  
+<a href="https://cacoo.com/diagrams/MIS8VpBACc4MNzLs/0D12F"><img src="https://cacoo.com/diagrams/MIS8VpBACc4MNzLs-0D12F-w800-h600.png" border=1/></a>  
 
 <br>
 
-<a href="https://gyazo.com/a26cba937a8717a3f7eb24c715346cfd"><img src="https://i.gyazo.com/a26cba937a8717a3f7eb24c715346cfd.png" alt="Image from Gyazo" width="800" border=1/></a>  
+<a href="https://gyazo.com/488d48d0f8a34b1047c3084160e9a03d"><img src="https://i.gyazo.com/488d48d0f8a34b1047c3084160e9a03d.png" alt="Image from Gyazo" width="800" border=1/></a> 
 
 <br>
 
@@ -84,22 +84,18 @@ CacooというWebアプリケーションを使うことにした。
 9. パーシャル化する（show・edit・new）
 10. Billsのコントローラに処理を記述する + 各ビューをform_withでつなげる
 11. RSpecにテストを書く（create, update, destroyが機能するか）
-12. Usersモデルの追加 + Association
+12. Usersモデルの追加
 13. bcryptを使用する（パスワードのダイジェスト）
-14. Adminのindexビューを作成する
+14. Admin/billsのindexビューを作成する
 15. Adminに共通のnavバーを作る
-16. Adminのshowビューを作成する
-17. Adminのeditビューを作成する
-18. Adminのdairi_newビューを作成する
-19. Adminのshukin_newビューを作成する
-20. パーシャル化する（show・edit・new）
-21. Adminのコントローラに処理を記述する + 各ビューをform_withでつなげる
-22. RSpecにテストを書く（create, update, destroy, change が機能するか）
-23. RSpecにテストを書く（Billsのビューにて、Admin が create, update, changeしたものが反映されるか）
-24. ログインのビューを作る
-25. ログイン・ログアウトの機能を作る
-26. RSpecにテストを書く（ログイン・ログアウト機能）
-27. Billsのビューにて、ログインユーザーのbillsのみ表示されるようにする
-28. RSpecにテストを書く（ログイン後、ログインユーザーのbillsのみしか表示されないかなど）
-29. 余裕がなさそうだけど、できればUser関係まで頑張る
-30. その場合、Profileモデルを追加し、associationする
+16. Admin/billsのshowビューを作成する
+17. Admin/billsのeditビューを作成する
+18. Admin/billsのnewビューを作成する
+19. パーシャル化する（show・edit・new）
+20. Adminのコントローラに処理を記述する + 各ビューをform_withでつなげる
+21. RSpecにテストを書く（create, update, destroy, change が機能するか）
+22. RSpecにテストを書く（Billsのビューにて、Admin が create, update, changeしたものが反映されるか）
+23. ログインのビューを作る
+24. ログイン・ログアウトの機能を作る
+25. RSpecにテストを書く（ログイン・ログアウト機能）
+26. 今後の課題として、Userの登録・編集・削除機能を追加する
