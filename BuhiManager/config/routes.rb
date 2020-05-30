@@ -5,15 +5,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :bills do
-      member do
-        post :done
-        post :undone
-      end
+      resource :completion, only: [:update, :destroy], module: "bills"
     end
   end
 
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
-
+  resources :sessions, only: [:new, :create, :destroy]
 end
