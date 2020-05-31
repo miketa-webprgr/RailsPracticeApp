@@ -1,2 +1,35 @@
-h1 マイページ
+h1.mt-5.mb-5 申請一覧
 
+h4.pt-5.pb-3 請求中
+
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Bill.human_attribute_name(:date)
+      th= Bill.human_attribute_name(:name)
+      th= Bill.human_attribute_name(:item)
+      th= Bill.human_attribute_name(:price)
+    tbody
+      - @bills.each do |bill|
+        tr
+          td= bill.date
+          td= bill.name
+          td= bill.item
+          td= bill.price
+
+h4.pt-5.pb-3 精算済
+
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Bill.human_attribute_name(:date)
+      th= Bill.human_attribute_name(:name)
+      th= Bill.human_attribute_name(:item)
+      th= Bill.human_attribute_name(:price)
+    tbody
+      - @bills.each do |bill|
+        tr
+          td= bill.date
+          td= bill.name
+          td= bill.item
+          td= bill.price
