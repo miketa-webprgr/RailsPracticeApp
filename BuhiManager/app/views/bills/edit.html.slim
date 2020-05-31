@@ -1,0 +1,30 @@
+/ いずれコントローラもしくはモデルでの処理にて、status(:boolean)の値を参照して、
+/ falseであれば「申請中」、trueであれば「精算済」と表示するよう設定する
+/ 差し当たり、「申請中」という表示で固定しておく
+
+h1.mt-5.mb-5 申請中
+
+= form_with model: @bill, local: true do |f|
+  table.table.table-hover
+    thead.thead-default
+      tr
+        th= Bill.human_attribute_name(:paid_on)
+        th= Bill.human_attribute_name(:name)
+        th= Bill.human_attribute_name(:item)
+        th= Bill.human_attribute_name(:price)
+    tbody
+      tr
+        td
+          .form-group
+            = f.datetime_field :paid_on, class: 'form-control'
+        td
+          .form-group
+            = f.text_field :name, class: 'form-control'
+        td
+          .form-group
+            = f.text_field :item, class: 'form-control' 
+        td
+          .form-group
+            = f.number_field :price, class: 'form-control' 
+  
+  = f.submit nil, class: 'btn btn-primary mr-3'
