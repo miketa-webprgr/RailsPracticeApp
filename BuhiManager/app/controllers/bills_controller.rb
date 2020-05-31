@@ -10,6 +10,7 @@ class BillsController < ApplicationController
   end
 
   def new
+    @bill = Bill.new
   end
 
   def edit
