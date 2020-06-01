@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    models:
+      # view側： User.model_name.human => "ユーザ" / t("activerecord.models.user")と同じ
+      # user: ユーザー
+        bill: 申請 
+
+    # model毎に定義したいattributesを記述
+    attributes:
+      bill:
+        # view側： User.human_attribute_name :name => "名前" /　t("activerecord.attributes.user.name")と同じ
+        status: 未精算・精算済
+        name: 名前
+        paid_on: 立替日
+        item: 内容
+        description: 詳細 
+        price: 金額
+        completed_on: 精算日
+                
+  # 全てのmodelで共通して使用するattributesを定義
+  attributes:
+    created_at: 申請日時
+    updated_at: 更新日時

@@ -15,7 +15,7 @@ table.table.table-hover
           td= bill.paid_on
           td= link_to bill.name, bill
           td= bill.item
-          td= bill.price
+          td= number_to_currency bill.price
 
 h4.pt-5.pb-3 精算済
 
@@ -32,4 +32,4 @@ table.table.table-hover
           td= bill.completed_on
           td= bill.name
           td= bill.item
-          td= bill.price
+          td= number_to_currency bill.price

@@ -16,7 +16,7 @@ table.table.table-hover
       td= @bill.paid_on
       td= @bill.name
       td= @bill.item
-      td= @bill.price
+      td= number_to_currency @bill.price
 
 table.table.table-hover.mt-5.mb-5
   tbody
