@@ -5,7 +5,6 @@ class BillsController < ApplicationController
   end
 
   def show
-    @bills = Bill.all
     @bill = Bill.find(params[:id])
   end
 

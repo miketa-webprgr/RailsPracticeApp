@@ -1,4 +1,4 @@
-= form_with model: @bill, local: true do |f|
+= form_with model: @bill, local: true do |f| 
   table.table.table-hover
     thead.thead-default
       tr
@@ -19,6 +19,21 @@
             = f.text_field :item, class: 'form-control' 
         td
           .form-group
-            = f.number_field :price, class: 'form-control' 
-  
+            = f.number_field :price, class: 'form-control'
+
+  table.table.table-hover.mt-5.mb-5
+    tbody
+      tr
+        / recordがあれば以下を表示（より直感的で分かりやすいコーディング方法があれば修正したい）
+        - unless @bill.new_record?
+          th= Bill.human_attribute_name(:completed_on)
+          td= @bill.completed_on
+      tr
+        th= Bill.human_attribute_name(:description)
+        td
+          .form-group
+            = f.text_area :description, class: 'form-control', size: "30x10"
+
   = f.submit nil, class: 'btn btn-primary mr-3'
+  
+ 
