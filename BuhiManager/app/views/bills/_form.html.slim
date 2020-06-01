@@ -1,3 +1,8 @@
+- if bill.errors.present?
+  ul#error_explanation
+    - bill.errors.full_messages.each do |message|
+      li= message
+
 = form_with model: @bill, local: true do |f| 
   table.table.table-hover
     thead.thead-default
@@ -10,7 +15,7 @@
       tr
         td
           .form-group
-            = f.datetime_field :paid_on, class: 'form-control'
+            = f.date_field :paid_on, class: 'form-control'
         td
           .form-group
             = f.text_field :name, class: 'form-control'

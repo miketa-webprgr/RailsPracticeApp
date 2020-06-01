@@ -17,12 +17,26 @@ class BillsController < ApplicationController
   end
 
   def create
+    @bill = Bill.new(bill_params)
+    
+    if @bill.save
+      redirect_to @bill, notice: "#{@bill.item}（#{@bill.price}円）について、精算申請を提出しました。"
+    else
+      render :new
+    end
+
   end
 
   def update
   end
 
   def destroy
+  end
+
+  private
+
+  def bill_params
+    params.require(:bill).permit(:status, :name, :paid_on, :item, :description, :price, :completed_on)
   end
 
 end

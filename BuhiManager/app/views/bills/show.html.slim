@@ -4,6 +4,9 @@
 
 h1.mt-5.mb-5 申請中
 
+- if flash.notice.present?
+  .alert.alert-success.mt-5.mb-5= flash.notice
+
 table.table.table-hover
   thead.thead-default
     tr
