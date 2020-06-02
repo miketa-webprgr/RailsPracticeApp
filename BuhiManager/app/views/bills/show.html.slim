@@ -2,10 +2,9 @@
 / falseであれば「申請中」、trueであれば「精算済」と表示するよう設定する
 / 差し当たり、「申請中」という表示で固定しておく
 
-h1.mt-5.mb-5 申請中
+h1.mt-5.mb-5 申請の詳細
 
-- if flash.notice.present?
-  .alert.alert-success.mt-5.mb-5= flash.notice
+= render 'success'
 
 table.table.table-hover
   thead.thead-default
@@ -31,4 +30,4 @@ table.table.table-hover.mt-5.mb-5
       td= @bill.description
 
 = link_to '編集', edit_bill_path(@bill), class: 'btn btn-primary mr-3'
-= link_to '削除', bill_path(@bill), method: :delete, class: 'btn btn-danger'
+= link_to '削除', bill_path(@bill), method: :delete, data: {confirm: "#{@bill.item}（#{@bill.price}円）を削除しますが、よろしいですか？"}, class: 'btn btn-danger'

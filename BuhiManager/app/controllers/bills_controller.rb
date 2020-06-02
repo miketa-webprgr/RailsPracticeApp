@@ -38,6 +38,13 @@ class BillsController < ApplicationController
   end
 
   def destroy
+    @bill = Bill.find(params[:id])
+    
+    if @bill.destroy
+      redirect_to root_path, notice: "#{@bill.item}（#{@bill.price}円）を削除しました。"
+    else
+      render :edit
+    end
   end
 
   private
