@@ -28,6 +28,13 @@ class BillsController < ApplicationController
   end
 
   def update
+    @bill = Bill.find(params[:id])
+    
+    if @bill.update(bill_params)
+      redirect_to @bill, notice: "#{@bill.item}（#{@bill.price}円）について、更新しました。"
+    else
+      render :edit
+    end
   end
 
   def destroy
