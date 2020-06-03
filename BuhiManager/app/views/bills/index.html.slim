@@ -1,0 +1,37 @@
+h1.mt-5.mb-5 申請一覧
+
+= render 'success'
+
+h4.pt-5.pb-3 請求中
+
+table.table.table-hover.uncompleted
+  thead.thead-default
+    tr
+      th= Bill.human_attribute_name(:paid_on)
+      th= Bill.human_attribute_name(:name)
+      th= Bill.human_attribute_name(:item)
+      th= Bill.human_attribute_name(:price)
+    tbody
+      - @bills.each do |bill|
+        tr
+          td= bill.paid_on
+          td= link_to bill.name, bill
+          td= bill.item
+          td= number_to_currency bill.price
+
+h4.pt-5.pb-3 精算済
+
+table.table.table-hover.completed
+  thead.thead-default
+    tr
+      th= Bill.human_attribute_name(:completed_on)
+      th= Bill.human_attribute_name(:name)
+      th= Bill.human_attribute_name(:item)
+      th= Bill.human_attribute_name(:price)
+    tbody
+      - @bills.each do |bill|
+        tr
+          td= bill.completed_on
+          td= bill.name
+          td= bill.item
+          td= number_to_currency bill.price
