@@ -4,7 +4,7 @@ h1.mt-5.mb-5 申請一覧
 
 h4.pt-5.pb-3 請求中
 
-table.table.table-hover
+table.table.table-hover.uncompleted
   thead.thead-default
     tr
       th= Bill.human_attribute_name(:paid_on)
@@ -21,7 +21,7 @@ table.table.table-hover
 
 h4.pt-5.pb-3 精算済
 
-table.table.table-hover
+table.table.table-hover.completed
   thead.thead-default
     tr
       th= Bill.human_attribute_name(:completed_on)
