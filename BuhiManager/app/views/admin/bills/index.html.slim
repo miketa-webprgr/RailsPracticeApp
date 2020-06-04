@@ -15,7 +15,7 @@ table.table.table-hover.uncompleted
       - @bills.each do |bill|
         tr
           td= bill.paid_on
-          td= link_to bill.name, bill
+          td= link_to bill.name, admin_bill_path(bill)
           td= bill.item
           td= number_to_currency bill.price
 
@@ -32,6 +32,6 @@ table.table.table-hover.completed
       - @bills.each do |bill|
         tr
           td= bill.completed_on
-          td= link_to bill.name, bill
+          td= link_to bill.name, admin_bill_path(bill)
           td= bill.item
           td= number_to_currency bill.price
