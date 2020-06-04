@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title
+      | 【管理者】部費管理マネジャー
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .app-title.navbar.navbar-expand-md.navbar-dark.bg-dark
+      .navbar-brand 【管理者】部費管理マネジャー
+      ul.navbar-nav.ml-auto
+        li.nav-item= link_to '申請一覧', admin_bills_path, class: 'nav-link'
+        li.nav-item= link_to '代理申請する', new_admin_bill_path, class: 'nav-link'
+        li.nav-item= link_to '管理者ログアウト', sessions_path, method: :delete, class: 'nav-link'
+
+    .container
+      = yield

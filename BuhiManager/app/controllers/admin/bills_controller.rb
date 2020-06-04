@@ -1,4 +1,6 @@
 class Admin::BillsController < ApplicationController
+  layout 'admin_application'
+
   def index
     @bills = Bill.all
   end
