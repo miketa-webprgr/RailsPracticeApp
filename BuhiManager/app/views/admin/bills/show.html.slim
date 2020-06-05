@@ -4,7 +4,7 @@
 
 h1.mt-5.mb-5 申請の詳細
 
-= render 'success'
+= render 'shared/success'
 
 table.table.table-hover
   thead.thead-default
@@ -29,5 +29,22 @@ table.table.table-hover.mt-5.mb-5
       th= Bill.human_attribute_name(:description)
       td= @bill.description
 
-= link_to '編集', edit_admin_bill_path(@bill), class: 'btn btn-primary mr-3'
-= link_to '削除', admin_bill_path(@bill), method: :delete, data: {confirm: "#{@bill.name}さんに代わって、#{@bill.item}（#{@bill.price}円）を削除しますが、よろしいですか？"}, class: 'btn btn-danger'
+.d-flex
+  = link_to '編集', edit_admin_bill_path(@bill), class: 'btn btn-primary mr-3'
+  = link_to '削除', admin_bill_path(@bill), method: :delete, data: {confirm: "#{@bill.name}さんに代わって、#{@bill.item}（#{@bill.price}円）を削除しますが、よろしいですか？"}, class: 'btn btn-danger mr-3'
+  .ml-auto
+    -if @bill.status == true
+      = form_with model: @bill, url: admin_bill_completion_path(@bill), method: :delete, data: {confirm: "#{@bill.name}さんの申請「#{@bill.item}（#{@bill.price}円）」を未精算に戻しますが、よろしいですか？"}, local: true do |f|
+        = f.hidden_field :status, value: false
+        = f.hidden_field :completed_on, value: nil
+        = f.submit '未精算に戻す', class: 'btn btn-info'
+    -else 
+      = form_with model: @bill, url: admin_bill_completion_path(@bill), local: true do |f|
+        = f.hidden_field :status, value: true
+        = f.hidden_field :completed_on, value: Time.zone.today
+        = f.submit '返金したので精算済にする', class: 'btn btn-info'
+
+
+
+
+

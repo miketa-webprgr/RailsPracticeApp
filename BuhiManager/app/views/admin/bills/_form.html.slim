@@ -1,8 +1,3 @@
-- if bill.errors.present?
-  ul#error_explanation
-    - bill.errors.full_messages.each do |message|
-      li= message
-
 - if bill.new_record?
   = form_with model: @bill, url: admin_bills_path(@bill), local: true do |f|
     table.table.table-hover
@@ -30,10 +25,11 @@
     table.table.table-hover.mt-5.mb-5
       tbody
         tr
-          / recordがあれば以下を表示（より直感的で分かりやすいコーディング方法があれば修正したい）
-          - unless @bill.new_record?
+          - if @bill.completed_on.presence
             th= Bill.human_attribute_name(:completed_on)
-            td= @bill.completed_on
+            td             
+              .form-group
+                = f.date_field :completed_on, class: 'form-control'
         tr
           th= Bill.human_attribute_name(:description)
           td
@@ -69,10 +65,11 @@
     table.table.table-hover.mt-5.mb-5
       tbody
         tr
-          / recordがあれば以下を表示（より直感的で分かりやすいコーディング方法があれば修正したい）
-          - unless @bill.new_record?
+          - if @bill.completed_on.presence
             th= Bill.human_attribute_name(:completed_on)
-            td= @bill.completed_on
+            td             
+              .form-group
+                = f.date_field :completed_on, class: 'form-control'
         tr
           th= Bill.human_attribute_name(:description)
           td
