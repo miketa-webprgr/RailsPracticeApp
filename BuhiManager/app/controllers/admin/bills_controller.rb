@@ -2,7 +2,8 @@ class Admin::BillsController < ApplicationController
   layout 'admin_application'
 
   def index
-    @bills = Bill.all
+    @bills_uncompleted = Bill.where(status: "false").order(paid_on: :asc)
+    @bills_completed = Bill.where(status: "true").order(completed_on: :asc)
   end
 
   def show

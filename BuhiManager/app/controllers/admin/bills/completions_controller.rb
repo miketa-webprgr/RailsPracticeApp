@@ -1,7 +1,6 @@
 class Admin::Bills::CompletionsController < ApplicationController
   def update
     @bill = Bill.find(params[:bill_id])
-    binding.pry
 
     if @bill.update(bill_params)
       redirect_to admin_bills_path, notice: "返金が完了したので、#{@bill.name}さんの申請「#{@bill.item}（#{@bill.price}円）」を精算済にしました。"
@@ -11,7 +10,6 @@ class Admin::Bills::CompletionsController < ApplicationController
 
   def destroy
     @bill = Bill.find(params[:bill_id])
-    binding.pry
 
     if @bill.update(bill_params)
       redirect_to admin_bills_path, notice: "#{@bill.name}さんの申請「#{@bill.item}（#{@bill.price}円）」を未精算に戻しました。"

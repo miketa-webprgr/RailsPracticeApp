@@ -12,7 +12,7 @@ table.table.table-hover.uncompleted
       th= Bill.human_attribute_name(:item)
       th= Bill.human_attribute_name(:price)
     tbody
-      - @bills.each do |bill|
+      - @bills_uncompleted.each do |bill|
         tr
           td= bill.paid_on
           td= link_to bill.name, admin_bill_path(bill)
@@ -29,7 +29,7 @@ table.table.table-hover.completed
       th= Bill.human_attribute_name(:item)
       th= Bill.human_attribute_name(:price)
     tbody
-      - @bills.each do |bill|
+      - @bills_completed.each do |bill|
         tr
           td= bill.completed_on
           td= link_to bill.name, admin_bill_path(bill)
