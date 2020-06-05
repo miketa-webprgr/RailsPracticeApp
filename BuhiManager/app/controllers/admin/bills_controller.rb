@@ -1,4 +1,5 @@
-class BillsController < ApplicationController
+class Admin::BillsController < ApplicationController
+  layout 'admin_application'
 
   def index
     @bills_uncompleted = Bill.where(status: "false").order(paid_on: :asc)
@@ -21,7 +22,8 @@ class BillsController < ApplicationController
     @bill = Bill.new(bill_params)
     
     if @bill.save
-      redirect_to @bill, notice: "#{@bill.item}（#{@bill.price}円）について、精算申請を提出しました。"
+      # Railsの規約から外れた設計となっているため、ゴリ押し。。。
+      redirect_to admin_bill_path(@bill.id), notice: "#{@bill.name}さんに代わって、#{@bill.item}（#{@bill.price}円）の精算申請を提出しました。"
     else
       render :new
     end
@@ -32,7 +34,7 @@ class BillsController < ApplicationController
     @bill = Bill.find(params[:id])
     
     if @bill.update(bill_params)
-      redirect_to @bill, notice: "#{@bill.item}（#{@bill.price}円）について、更新しました。"
+      redirect_to admin_bill_path, notice: "#{@bill.name}さんに代わって、#{@bill.item}（#{@bill.price}円）の精算申請を更新しました。"
     else
       render :edit
     end
@@ -42,7 +44,7 @@ class BillsController < ApplicationController
     @bill = Bill.find(params[:id])
     
     if @bill.destroy
-      redirect_to root_path, notice: "#{@bill.item}（#{@bill.price}円）を削除しました。"
+      redirect_to admin_bills_path, notice: "#{@bill.name}さんに代わって、#{@bill.item}（#{@bill.price}円）の精算申請を削除しました。"
     else
       render :edit
     end

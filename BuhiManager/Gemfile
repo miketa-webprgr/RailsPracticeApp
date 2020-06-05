@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
+# bindin-pryでチェックする
+gem 'pry-rails'
+
 # 検索機能等を追加するransack
 gem 'ransack'
 # URLをオートリンク化するgemを追加

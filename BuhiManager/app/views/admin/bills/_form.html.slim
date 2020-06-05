@@ -1,0 +1,81 @@
+- if bill.new_record?
+  = form_with model: @bill, url: admin_bills_path(@bill), local: true do |f|
+    table.table.table-hover
+      thead.thead-default
+        tr
+          th= Bill.human_attribute_name(:paid_on)
+          th= Bill.human_attribute_name(:name)
+          th= Bill.human_attribute_name(:item)
+          th= Bill.human_attribute_name(:price)
+      tbody
+        tr
+          td
+            .form-group
+              = f.date_field :paid_on, class: 'form-control'
+          td
+            .form-group
+              = f.text_field :name, class: 'form-control'
+          td
+            .form-group
+              = f.text_field :item, class: 'form-control' 
+          td
+            .form-group
+              = f.number_field :price, class: 'form-control'
+
+    table.table.table-hover.mt-5.mb-5
+      tbody
+        tr
+          - if @bill.completed_on.presence
+            th= Bill.human_attribute_name(:completed_on)
+            td             
+              .form-group
+                = f.date_field :completed_on, class: 'form-control'
+        tr
+          th= Bill.human_attribute_name(:description)
+          td
+            .form-group
+              = f.text_area :description, class: 'form-control', size: "30x10"
+
+    = f.submit nil, class: 'btn btn-primary mr-3'
+  
+- else
+  = form_with model: @bill, url: admin_bill_path(@bill), method: :patch, local: true do |f|
+    table.table.table-hover
+      thead.thead-default
+        tr
+          th= Bill.human_attribute_name(:paid_on)
+          th= Bill.human_attribute_name(:name)
+          th= Bill.human_attribute_name(:item)
+          th= Bill.human_attribute_name(:price)
+      tbody
+        tr
+          td
+            .form-group
+              = f.date_field :paid_on, class: 'form-control'
+          td
+            .form-group
+              = f.text_field :name, class: 'form-control'
+          td
+            .form-group
+              = f.text_field :item, class: 'form-control' 
+          td
+            .form-group
+              = f.number_field :price, class: 'form-control'
+
+    table.table.table-hover.mt-5.mb-5
+      tbody
+        tr
+          - if @bill.completed_on.presence
+            th= Bill.human_attribute_name(:completed_on)
+            td             
+              .form-group
+                = f.date_field :completed_on, class: 'form-control'
+        tr
+          th= Bill.human_attribute_name(:description)
+          td
+            .form-group
+              = f.text_area :description, class: 'form-control', size: "30x10"
+
+    = f.submit nil, class: 'btn btn-primary mr-3'
+  
+ 

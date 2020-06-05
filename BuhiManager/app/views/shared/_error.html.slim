@@ -1,0 +1,4 @@
+- if bill.errors.present?
+  ul#error_explanation
+    - bill.errors.full_messages.each do |message|
+      li= message

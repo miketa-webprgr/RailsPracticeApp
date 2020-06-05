@@ -1,0 +1,51 @@
+/ いずれコントローラもしくはモデルでの処理にて、status(:boolean)の値を参照して、
+/ falseであれば「申請中」、trueであれば「精算済」と表示するよう設定する
+/ 差し当たり、「申請中」という表示で固定しておく
+
+h1.mt-5.mb-5
+  = "申請の詳細（#{status_on_view(@bill)}）"
+
+= render 'shared/success'
+
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Bill.human_attribute_name(:paid_on)
+      th= Bill.human_attribute_name(:name)
+      th= Bill.human_attribute_name(:item)
+      th= Bill.human_attribute_name(:price)
+  tbody
+    tr
+      td= @bill.paid_on
+      td= @bill.name
+      td= @bill.item
+      td= number_to_currency @bill.price
+
+table.table.table-hover.mt-5.mb-5
+  tbody
+    tr
+      th= Bill.human_attribute_name(:completed_on)
+      td= @bill.completed_on
+    tr
+      th= Bill.human_attribute_name(:description)
+      td= @bill.description
+
+.d-flex
+  = link_to '編集', edit_admin_bill_path(@bill), class: 'btn btn-primary mr-3'
+  = link_to '削除', admin_bill_path(@bill), method: :delete, data: {confirm: "#{@bill.name}さんに代わって、#{@bill.item}（#{@bill.price}円）を削除しますが、よろしいですか？"}, class: 'btn btn-danger mr-3'
+  .ml-auto
+    -if @bill.status == true
+      = form_with model: @bill, url: admin_bill_completion_path(@bill), method: :delete, data: {confirm: "#{@bill.name}さんの申請「#{@bill.item}（#{@bill.price}円）」を未精算に戻しますが、よろしいですか？"}, local: true do |f|
+        = f.hidden_field :status, value: false
+        = f.hidden_field :completed_on, value: nil
+        = f.submit '未精算に戻す', class: 'btn btn-info'
+    -else 
+      = form_with model: @bill, url: admin_bill_completion_path(@bill), local: true do |f|
+        = f.hidden_field :status, value: true
+        = f.hidden_field :completed_on, value: Time.zone.today
+        = f.submit '返金したので精算済にする', class: 'btn btn-info'
+
+
+
+
+
