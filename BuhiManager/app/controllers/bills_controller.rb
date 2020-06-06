@@ -15,6 +15,7 @@ class BillsController < ApplicationController
 
   def edit
     @bill = Bill.find(params[:id])
+    redirect_to @bill if @bill.status == true
   end
 
   def create
@@ -30,6 +31,7 @@ class BillsController < ApplicationController
 
   def update
     @bill = Bill.find(params[:id])
+    redirect_to @bill if @bill.status == true
     
     if @bill.update(bill_params)
       redirect_to @bill, notice: "#{@bill.item}（#{@bill.price}円）について、更新しました。"
@@ -40,6 +42,7 @@ class BillsController < ApplicationController
 
   def destroy
     @bill = Bill.find(params[:id])
+    redirect_to @bill if @bill.status == true
     
     if @bill.destroy
       redirect_to root_path, notice: "#{@bill.item}（#{@bill.price}円）を削除しました。"

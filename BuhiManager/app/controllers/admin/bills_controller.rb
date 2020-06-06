@@ -1,4 +1,5 @@
 class Admin::BillsController < ApplicationController
+  before_action :require_admin
   layout 'admin_application'
 
   def index
@@ -54,6 +55,10 @@ class Admin::BillsController < ApplicationController
 
   def bill_params
     params.require(:bill).permit(:status, :name, :paid_on, :item, :description, :price, :completed_on)
+  end
+
+  def require_admin
+    redirect_to root_path unless current_user.admin?
   end
 
 end
