@@ -30,5 +30,6 @@ table.table.table-hover.mt-5.mb-5
       th= Bill.human_attribute_name(:description)
       td= @bill.description
 
-= link_to '編集', edit_bill_path(@bill), class: 'btn btn-primary mr-3'
-= link_to '削除', bill_path(@bill), method: :delete, data: {confirm: "#{@bill.item}（#{@bill.price}円）を削除しますが、よろしいですか？"}, class: 'btn btn-danger'
+- if @bill.status == false
+  = link_to '編集', edit_bill_path(@bill), class: 'btn btn-primary mr-3'
+  = link_to '削除', bill_path(@bill), method: :delete, data: {confirm: "#{@bill.item}（#{@bill.price}円）を削除しますが、よろしいですか？"}, class: 'btn btn-danger'
