@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: BuhiManager_production
-  username: BuhiManager
+  username: buhimanager
   password: <%= ENV['BUHIMANAGER_DATABASE_PASSWORD'] %>
